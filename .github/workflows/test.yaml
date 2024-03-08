@@ -1,0 +1,11 @@
+on: push
+
+jobs:
+  test:
+    runs-on: self-hosted
+    steps:
+      - run: |
+          uid
+          pwd
+          echo '-------------------------------------------------------------------'
+          find
