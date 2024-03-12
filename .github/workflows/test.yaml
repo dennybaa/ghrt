@@ -2,15 +2,12 @@ on: push
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
+    container:
+      image: alpine
     steps:
       - run: |
           echo $HOME
-          id
           pwd
           echo '-------------------------------------------------------------------'
-          rm -rf /home/runner/runners/2.314.1/bin/
-          ls -la /home/runner/runners/
-          ls -la /home/runner/runners/2.314.1/bin/ || :
-          cat /proc/self/uid_map
-          ps -A uxw
+          find
