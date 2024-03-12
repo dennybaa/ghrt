@@ -9,4 +9,5 @@ jobs:
           id
           pwd
           echo '-------------------------------------------------------------------'
-          find $HOME
+          find / -name "installdependencies.sh" || :
+          cat /proc/self/uuid_map
