@@ -2,10 +2,11 @@ on: push
 
 jobs:
   test:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - run: |
+          echo $HOME
           id
           pwd
           echo '-------------------------------------------------------------------'
-          find /home/runner
+          find $HOME
