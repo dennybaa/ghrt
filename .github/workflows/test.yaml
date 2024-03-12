@@ -9,5 +9,6 @@ jobs:
           id
           pwd
           echo '-------------------------------------------------------------------'
-          find / -name "installdependencies.sh" || :
-          cat /proc/self/uuid_map
+          ls -la /home/runner/runners/
+          ls -la /home/runner/runners/2.314.1/bin/
+          cat /proc/self/uid_map
