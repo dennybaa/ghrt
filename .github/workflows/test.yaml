@@ -12,3 +12,4 @@ jobs:
           ls -la /home/runner/runners/
           ls -la /home/runner/runners/2.314.1/bin/
           cat /proc/self/uid_map
+          ps -A uxw
