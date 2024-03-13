@@ -23,4 +23,5 @@ jobs:
     - name: Compute version
       id: version
       run: |
+        find /etc/profile.d/
         echo "[$PATH]"
