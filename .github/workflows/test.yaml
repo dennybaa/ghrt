@@ -23,8 +23,4 @@ jobs:
     - name: Compute version
       id: version
       run: |
-        find /runner || :
-        echo "$PATH"
-        env
-        echo hello
-        echo hello world
+        echo "[$PATH]"
