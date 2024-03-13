@@ -25,5 +25,4 @@ jobs:
       shell: bash
       run: |
         find /etc/profile.d/
-        bas
         echo "[$PATH]"
