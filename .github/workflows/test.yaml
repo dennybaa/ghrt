@@ -33,6 +33,7 @@ jobs:
 
           # Bump release id
           version="${version:-$upstream_version}"
+          set -x
           if ( printf '%s ' "${local_versions[@]}" | grep -qwz "\b${version}\b" ); then
             echo "=> Release found version: ${version}"
             release_id=$(printf '%s\n' "${local_versions[@]}" | sed -re "/^${version}(-r[0-9]+)$/ !d" -e "s/^${version}-r//" | sort -nr | head -n1)
