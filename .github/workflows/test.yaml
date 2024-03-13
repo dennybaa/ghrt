@@ -20,31 +20,7 @@ jobs:
     runs-on: self-hosted
     container: ubuntu:22.04
     steps:
-      - name: Compute version
-
-        id: version
-        run: |-
-          gh auth login --with-token < $(echo -n ${{ github.token }})
-          ghopts="--exclude-drafts --exclude-pre-releases"
-          version="${{ github.event.inputs.version }}"
-
-          # Get upstream version
-          upstream_version=$(gh release list $ghopts --limit 1 --json 'tagName' --jq '.[].tagName' -R $UPSTREAM | sed 's/^v//')
-
-          set -x
-          local_versions=( $(gh release list $ghopts --json 'tagName' --jq '.[].tagName' -R $LOCAL | sed -re 's/^v//' -e "/^${upstream_version}(-r[0-9]+)?$/!d") )
-
-          # Bump release id
-          version="${version:-$upstream_version}"
-          if ( printf '%s ' "${local_versions[@]}" | grep -qwz "\b${version}\b" ); then
-            echo "=> Release found version: ${version}"
-            release_id=$(printf '%s\n' "${local_versions[@]}" | sed -re "/^${version}(-r[0-9]+)$/ !d" -e "s/^${version}-r//" | sort -nr | head -n1)
-            release_id="${release_id:-0}"
-            ((release_id++))
-          else
-            echo "=> New release version found: ${version}"
-          fi
-
-          echo "AS"
-          echo "version: ${version}"
-          echo "release_id: ${release_id}"
+    - name: Compute version
+      id: version
+      run: |
+        echo hello
