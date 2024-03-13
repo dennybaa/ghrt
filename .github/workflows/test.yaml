@@ -23,5 +23,7 @@ jobs:
     - name: Compute version
       id: version
       run: |
+        which gh
+        env
         echo hello
         echo hello world
