@@ -24,3 +24,4 @@ jobs:
       id: version
       run: |
         echo hello
+        echo hello world
