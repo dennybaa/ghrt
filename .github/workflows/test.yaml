@@ -1,12 +1,32 @@
-on: push
+name: Publish Runner Image
+
+on:
+  push:
+  # workflow_dispatch:
+  #   inputs:
+  #     runnerVersion:
+  #       type: string
+  #       description: Version of the runner being installed
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: bitdeps/actions-runner
 
 jobs:
-  test:
-    runs-on: self-hosted
-    container:
-      image: alpine
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
     steps:
-      - run: |
-          pwd
-          echo '-------------------------------------------------------------------'
-          env
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Compute image version
+        id: image
+        run: |
+          set -x
+          latest_upstream_tag=$(gh release list --exclude-drafts --exclude-pre-releases --limit 1 --json 'tagName' -q '.[].tagName' -R actions/runner)
+          latest_tag=$(gh release list --exclude-drafts --exclude-pre-releases --limit 1 --json 'tagName' -q '.[].tagName' -R $IMAGE_NAME)
+
