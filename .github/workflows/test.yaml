@@ -24,7 +24,7 @@ jobs:
 
         id: version
         run: |-
-          gh auth login --with-token <<< "${{ github.token }}"
+          gh auth login --with-token < $(echo -n ${{ github.token }})
           ghopts="--exclude-drafts --exclude-pre-releases"
           version="${{ github.event.inputs.version }}"
 
