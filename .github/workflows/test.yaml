@@ -29,7 +29,7 @@ jobs:
 
           # Get upstream version
           upstream_version=$(gh release list $ghopts --limit 1 --json 'tagName' --jq '.[].tagName' -R $UPSTREAM | sed 's/^v//')
-          local_versions=( $(gh release list $ghopts --json 'tagName' --jq '.[].tagName' -R $LOCAL | sed -re 's/^v//' -e "/^${upstream_version}(-r[0-9]+)?$/") )
+          local_versions=( $(gh release list $ghopts --json 'tagName' --jq '.[].tagName' -R $LOCAL | sed -re 's/^v//' -e "/^${upstream_version}(-r[0-9]+)?$/!d") )
 
           # Bump release id
           version="${version:-$upstream_version}"
