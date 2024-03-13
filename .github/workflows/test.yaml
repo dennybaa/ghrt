@@ -7,7 +7,6 @@ jobs:
       image: alpine
     steps:
       - run: |
-          echo $HOME
           pwd
           echo '-------------------------------------------------------------------'
-          find
+          env
