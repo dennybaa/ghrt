@@ -26,8 +26,11 @@ jobs:
     - name: Compute version
       id: version
       run: |
-        echo hello world
-        # gh auth login --with-token <<< "${{ github.token }}"
+        echo $PATH
+        which podman || :
+        which docker && docker ps || :
+
+          # gh auth login --with-token <<< "${{ github.token }}"
         # ghopts="--exclude-drafts --exclude-pre-releases"
         # version="${{ github.event.inputs.version }}"
 
