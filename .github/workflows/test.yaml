@@ -27,7 +27,9 @@ jobs:
       id: version
       run: |
         echo $PATH
-        which podman || :
+        echo $DOCKER_HOST
+        echo ---------------------------------
+        env 
         which docker && docker ps || :
 
           # gh auth login --with-token <<< "${{ github.token }}"
