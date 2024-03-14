@@ -42,7 +42,7 @@ jobs:
           echo "=> Release found version: ${version}"
           release_id=$(printf '%s\n' "${local_versions[@]}" | sed -re "/^${version}(-r[0-9]+)$/ !d" -e "s/^${version}-r//" | sort -nr | head -n1)
           release_id="${release_id:-0}"
-          ((release_id++))
+          release_id=$((release_id+1))
         else
           echo "=> New release version found: ${version}"
         fi
