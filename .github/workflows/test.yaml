@@ -17,8 +17,8 @@ env:
 
 jobs:
   build:
-    runs-on: self-hosted
-    container: images/ubuntu:22.04
+    runs-on: small
+    container: ghcr.io/bitdeps/actions-runner/images/ubuntu:22.04
     defaults:
       run:
         shell: bash -e {0}
